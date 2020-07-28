@@ -17,55 +17,13 @@ class XyloPhoneApp extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Expanded(
-              child: FlatButton(
-                  color: Colors.red,
-                  onPressed: () {
-                    playSound(1);
-                  }),
-            ),
-            Expanded(
-              child: FlatButton(
-                  color: Colors.orange,
-                  onPressed: () {
-                    playSound(2);
-                  }),
-            ),
-            Expanded(
-              child: FlatButton(
-                  color: Colors.yellowAccent,
-                  onPressed: () {
-                    playSound(3);
-                  }),
-            ),
-            Expanded(
-              child: FlatButton(
-                  color: Colors.green,
-                  onPressed: () {
-                    playSound(4);
-                  }),
-            ),
-            Expanded(
-              child: FlatButton(
-                  color: Colors.teal,
-                  onPressed: () {
-                    playSound(5);
-                  }),
-            ),
-            Expanded(
-              child: FlatButton(
-                  color: Colors.blue,
-                  onPressed: () {
-                    playSound(6);
-                  }),
-            ),
-            Expanded(
-              child: FlatButton(
-                  color: Colors.purple,
-                  onPressed: () {
-                    playSound(7);
-                  }),
-            ),
+            customKeyBuilder(1, Colors.red),
+            customKeyBuilder(2, Colors.orange),
+            customKeyBuilder(3, Colors.amber),
+            customKeyBuilder(4, Colors.teal),
+            customKeyBuilder(5, Colors.green),
+            customKeyBuilder(6, Colors.blue.shade900),
+            customKeyBuilder(7, Colors.purple)
           ],
         )),
       ),
@@ -75,7 +33,19 @@ class XyloPhoneApp extends StatelessWidget {
     final player = AudioCache();
     player.play('note$num.wav');
   }
-
+  
+  Widget customKeyBuilder(int note, Color color){
+    return Expanded(
+      child: FlatButton(
+        color: color,
+        onPressed: (){
+          playSound(note);
+        },
+      ),
+    );
+  }
+  
+  
 // Another Method to reduce code Duplicacy.
 //  Widget custom_Xylo(int num, Color color){
 //    return FlatButton(
